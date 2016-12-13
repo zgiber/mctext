@@ -1,6 +1,7 @@
 # mctext
 
-Random-text generator using Markov chain from an user-provided sample.
+Random-text generator using Markov chain from an user-provided sample. It's useful in cases where generated text must be relatively random,
+but expected to contain a good average distribution and repetition of words.
 
 Example:
 
