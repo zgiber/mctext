@@ -16,6 +16,6 @@ var r io.Reader
 mc := mct.New()
 mc.Parse(r)
 
-output := mc.Generate(100) // Generates text with 100 words.
+output := mc.Generate("",100) // Generate text with 100 words. Without defining any starting word.
 
 ```
