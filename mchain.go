@@ -1,4 +1,4 @@
-package mchain
+package mctext
 
 import (
 	"bufio"
