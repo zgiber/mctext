@@ -23,12 +23,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	defer f.Close()
 
-	mc := &mct.MChain{
-		Nodes: map[string]*mct.Node{},
-	}
+	mc := mct.New()
 	mc.Parse(f)
 
 	length, err := strconv.ParseInt(args[1], 10, 64)

@@ -16,6 +16,12 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
+func New() *MChain {
+	return &MChain{
+		Nodes: map[string]*Node{},
+	}
+}
+
 func (mc *MChain) Parse(in io.Reader) {
 	wordScanner := bufio.NewScanner(in)
 	wordScanner.Split(bufio.ScanWords)
