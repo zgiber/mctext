@@ -22,7 +22,12 @@ func (mc *MChain) Parse(in io.Reader) {
 	var pos int
 	var last *Node
 	for wordScanner.Scan() {
-		word := wordScanner.Text()
+		word := strings.ToLower(wordScanner.Text())
+		word = strings.Trim(word, "-()[]{}\"'")
+		if strings.ContainsAny(word, "0123456789[](){}\"'-+/*%$") {
+			// filter some unwanted words
+			continue
+		}
 
 		if n, ok := mc.Nodes[word]; ok {
 

@@ -1,32 +1,37 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
 	"strconv"
 
-	mc "github.com/zgiber/mchaintext"
+	mct "github.com/zgiber/mctext"
 )
 
 func main() {
+	flag.Parse()
+	args := flag.Args()
 
-	if len(os.Args) != 3 {
+	if len(args) < 2 {
 		fmt.Println("usage:\ngenerate inputfile length")
+		return
 	}
 
-	f, err := os.Open(os.Args[1])
+	f, err := os.Open(args[0])
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	defer f.Close()
-	mc := &mc.{
-		map[string]*mc.Node{},
+
+	mc := &mct.MChain{
+		Nodes: map[string]*mct.Node{},
 	}
 	mc.Parse(f)
 
-	length, err := strconv.ParseInt(os.Args[2], 10, 64)
+	length, err := strconv.ParseInt(args[1], 10, 64)
 	if err != nil {
 		log.Fatal(err)
 	}
