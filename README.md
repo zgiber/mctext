@@ -9,13 +9,25 @@ Example:
 
 import "github.com/zgiber/mctext"
 
+...
+
 // provide an io.Reader with the sample. Ideally UTF encoded text.
 // ...
 var r io.Reader
 
-mc := mct.New()
-mc.Parse(r)
+...
+  mc := mctext.New()
+  mc.Parse(r)
 
-output := mc.Generate("",100) // Generate text with 100 words. Without defining any starting word.
+  output := mc.Generate("",100) // Generate text with 100 words without defining any starting word.
 
+```
+
+If you don't want to provide your own io.Reader you can use the sample in the library:
+
+```go
+...
+  mc := mctext.New()
+  mc.Parse(Sample) // The default sample is Tom Sawyer from Mark Twain :)
+...
 ```
